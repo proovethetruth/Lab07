@@ -4,28 +4,23 @@
 // f(0) = f(1) = f(2) = f(3) = 1
 // Подсчитать частоту каждого числа при выборке 100 000.
 	
+// Беру x, распределённое равномерно (0, 1]
+// 0.1 - шаг интревала
+
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <malloc.h>
 #include "Lab07.h"
 
 int main() {
-	int x = NULL, *arr;
-
-	srand(time(NULL));
-	x = rand();
-	printf("\n Seed: %d\n", x);
-	printf("\n -----------------------------------------\n");
-
-	arr = (int*)calloc(211, sizeof(int));
-
+	int* arr = (int*)calloc(211, sizeof(int));
 	for (int i = 0; i != 100000; i++)
 	{
-		arr[algorythm(x)]++;
-		x = rand();
+		arr[gen_rnd()]++;
 	}
 	for (int j = 0; j != 211; j++)
 	{
 		printf("\n Amount of %d: %d", j, arr[j]);
-	}		
+	}
+	printf("\n");
+	free(arr);
 }

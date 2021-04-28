@@ -1,18 +1,23 @@
 
 #include "Lab07.h"
 
-int algorythm(int x) {
-	int arr[] = { 1, 1, 1, 1 };
-	int tmp = 0, j = 0;
-	while (j < x)
-	{
-		for (int i = 0; i != 4; i++)
-			tmp += arr[i];
-		arr[j % 4] = tmp % 211;
-		tmp = 0;
-		j++;
-	}
-	for (int i = 0; i != 4; i++)
-		tmp += arr[i];
-	return tmp % 211;
+int gen_rnd(void) {
+	static int tmp = 0;
+	static int prvs[] = { 1, 1, 1, 1 };
+	static int point = 0;
+
+	tmp = 0;
+
+	for (int j = 0; j != 4; j++)
+		tmp += prvs[j];
+	tmp %= 211;
+
+	prvs[point] = tmp;
+
+	if (point == 4)
+		point = 0;
+	else
+		point++;
+
+	return tmp;
 }

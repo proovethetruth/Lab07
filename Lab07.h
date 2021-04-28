@@ -1,3 +1,6 @@
-#pragma once
+#ifndef LAB07_H
+#define LAB07_H
 
-int algorythm(int );
+int gen_rnd(void);
+
+#endif // !LAB07_H
